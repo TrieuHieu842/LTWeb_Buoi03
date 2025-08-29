@@ -1,7 +1,7 @@
-package buoi3.vn.iotstar;
+package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class user implements Serializable {
@@ -110,4 +110,3 @@ public class user implements Serializable {
         this.createdDate = createdDate;
     }
 }
-

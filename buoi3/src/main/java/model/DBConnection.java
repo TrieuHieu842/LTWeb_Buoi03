@@ -1,9 +1,8 @@
-package buoi3.vn.iotstar;
-
+package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBConnect {
+public class DBConnection {
     private final String serverName = "MSI\\TRIEUHIEU";
     private final String dbName = "LTWeb";
     private final String portNumber = "1433";
@@ -11,7 +10,7 @@ public class DBConnect {
     private final String userID = "sa";
     private final String password = "123456";
 
-    public Connection getConnectionW() throws Exception {
+    public Connection getConnection() throws Exception {
         String url;
         if (instance == null || instance.trim().isEmpty()) {
             url = "jdbc:sqlserver://" + serverName + ":" + portNumber +
@@ -27,7 +26,7 @@ public class DBConnect {
 
     public static void main(String[] args) {
         try {
-            Connection conn = new DBConnect().getConnectionW();
+            Connection conn = new DBConnection().getConnection();
             if (conn != null) {
                 System.out.println("Kết nối thành công!");
                 conn.close();
