@@ -13,7 +13,7 @@ public class user implements Serializable {
 	private String avatar;
 	private int roleid;
 	private String phone;
-	private Date createdDate;
+	private Date createDate;
 	// Constructor mặc định
     public user() {}
 
@@ -28,7 +28,7 @@ public class user implements Serializable {
         this.avatar = avatar;
         this.roleid = roleid;
         this.phone = phone;
-        this.createdDate = createdDate;
+        this.createDate = createdDate;
     }
     public user(String username, String password) {
     	this.userName = userName;
@@ -43,7 +43,7 @@ public class user implements Serializable {
         this.passWord = passWord;
         this.roleid = roleid;
         this.phone = phone;
-        this.createdDate = createdDate;
+        this.createDate = createdDate;
     }
 
     // Getter & Setter
@@ -104,9 +104,9 @@ public class user implements Serializable {
     }
 
     public Date getCreatedDate() {
-        return createdDate;
+        return createDate;
     }
     public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+        this.createDate = createdDate;
     }
 }

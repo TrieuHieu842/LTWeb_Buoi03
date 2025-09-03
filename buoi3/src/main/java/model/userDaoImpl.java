@@ -9,7 +9,7 @@ public class userDaoImpl implements userDao {
 	public PreparedStatement ps = null;
 	public ResultSet rs = null;
 	public void insert(user user) {
-		String sql = "INSERT INTO [users](email, username, fullname, password, avatar, roleid,phone,createddate) VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO [users](email, username, fullname, password, avatar, roleid,phone,createDate) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 		conn = new DBConnection().getConnection();
 		ps = conn.prepareStatement(sql);
@@ -20,7 +20,7 @@ public class userDaoImpl implements userDao {
 		ps.setString(5, user.getAvatar());
 		ps.setInt(6,user.getRoleid());
 		ps.setString(7,user.getPhone());
-		ps.setDate(8, user.getCreatedDate());
+		ps.setTimestamp(8, new java.sql.Timestamp(System.currentTimeMillis()));
 		ps.executeUpdate();
 		} catch (Exception e) {e.printStackTrace();}
 		}
@@ -63,4 +63,20 @@ public class userDaoImpl implements userDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public boolean updatePassword(String email, String newPassword) {
+	    String sql = "UPDATE [users] SET password = ? WHERE email = ?";
+	    try {
+	        conn = new DBConnection().getConnection();
+	        ps = conn.prepareStatement(sql);
+	        ps.setString(1, newPassword);
+	        ps.setString(2, email);
+	        int rows = ps.executeUpdate();
+	        return rows > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
 }

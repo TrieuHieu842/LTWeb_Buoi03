@@ -90,7 +90,7 @@ body {
 </style>
 </head>
 <body>
-	
+
 	<form class="login-container"
 		action="${pageContext.request.contextPath}/login" method="post">
 		<h2>Đăng Nhập Vào Hệ Thống</h2>
@@ -111,7 +111,10 @@ body {
 
 		<div class="options">
 			<label><input type="checkbox" name="remember"> Nhớ
-				tôi</label> <a href="#">Quên mật khẩu?</a>
+				tôi</label>
+			<p>
+				<a href="forgotPass.jsp">Quên mật khẩu?</a>
+			</p>
 		</div>
 
 		<button class="login-btn" type="submit">Đăng nhập</button>

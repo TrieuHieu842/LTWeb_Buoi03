@@ -40,8 +40,8 @@ public class registerController extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        String username = req.getParameter("username").trim();
         String email = req.getParameter("email").trim();
+        String username = req.getParameter("username").trim();
         String fullname = req.getParameter("fullname").trim();
         String phone = req.getParameter("phone").trim();
         String password = req.getParameter("password");
@@ -79,12 +79,12 @@ public class registerController extends HttpServlet {
             return;
         }
 
-        boolean isSuccess = service.register(username, password, email, fullname, phone);
+        boolean isSuccess = service.register(email, password, username, fullname, phone);
         if (isSuccess) {
             // Đặt thông báo thành công qua session để hiển thị ở trang login
             HttpSession session = req.getSession();
-            session.setAttribute("successMsg", "Đăng ký thành công! Vui lòng đăng nhập.");
-            resp.sendRedirect(req.getContextPath() + "/login");
+            req.setAttribute("successMsg", "Đăng ký thành công! Vui lòng đăng nhập.");
+            req.getRequestDispatcher(REGISTER).forward(req, resp);
         } else {
             alertMsg = "Lỗi hệ thống, vui lòng thử lại!";
             req.setAttribute("alert", alertMsg);

@@ -49,9 +49,9 @@ body {
 	<div class="register-container">
 		<h2>Tạo tài khoản mới</h2>
 
-		<c:if test="${alert != null}">
+		<%-- <c:if test="${alert != null}">
 			<div class="alert alert-danger">${alert}</div>
-		</c:if>
+		</c:if> --%>
 
 		<form action="register" method="post">
 			<div class="form-group">
@@ -117,11 +117,16 @@ body {
 			</div>
 
 			<button type="submit" class="btn btn-register mt-3">Đăng ký</button>
-			<c:if test="${not empty sessionScope.successMsg}">
-				<script>
-					alert("${sessionScope.successMsg}");
-				</script>
-				<c:remove var="successMsg" scope="session" />
+			<div class="d-flex justify-content-end mt-2">
+				<a href="login" class="btn btn-link">Đăng nhập</a>
+			</div>
+			<c:if test="${not empty successMsg}">
+				<div class="alert alert-success mt-3" role="alert">
+					${successMsg}</div>
+			</c:if>
+
+			<c:if test="${not empty alert}">
+				<div class="alert alert-danger mt-3" role="alert">${alert}</div>
 			</c:if>
 		</form>
 	</div>
